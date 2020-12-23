@@ -1,0 +1,24 @@
+Ways of insturmenting the binary so that we can run AFL
+
+in order of speed of fuzzing, slowest to fastest:
+1. qemu mode
+2. dynamically adding insturmnetation
+3. statically adding inst by lifting llvm and recompiling with afl-clang
+
+1 -> built into afl++, always works but is much slower
+2 -> with dyninst
+3 -> with reopt to go from binary -> llvm
+- Alternate lifters:
+ - https://github.com/microsoft/llvm-mctoll (supports recompilation)
+ - retdec (doesn't seem to support recompilation)
+ - https://github.com/revng/revng (is used for this exact purpose, https://rev.ng/blog/fuzzing/post.html) -> has the capability to use libFuzzer persistent mode!!
+
+- Also gives the opporutnity to maybe insert afl fuzz persistent mode functions into the binary
+    - Maybe having a seperate llvm bitcode file with the afl stuff ready, and then linking that to the main binary once lifted
+
+- revng: refuses to build, out of date and impossible to install
+- llvm-mctoll: works sometimes, takes forever to build, runs very quickly, compiled llvm sometimes crashes clang or is just invalid
+- retdec: no official support for recompilation from LLVM, maybe maybe from C 
+- mcsema: advertised to work, but needs IDA 
+
+https://github.com/lifting-bits/mcsema/blob/master/docs/UsingLibFuzzer.md

@@ -1,0 +1,8 @@
+- https://github.com/FoRTE-Research/UnTracer-AFL https://arxiv.org/pdf/1812.11875.pdf
+- https://github.com/lifting-bits/grr
+
+https://github.com/Microsvuln/Awesome-AFL
+
+I think I need to use an AFL compatible fuzzer so I can use driller
+
+altneratively: https://blog.trailofbits.com/2016/08/02/engineering-solutions-to-hard-program-analysis-problems/ use the trail of bits fuzzer + symbolic executor pair

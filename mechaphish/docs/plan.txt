@@ -1,0 +1,23 @@
+- make a simple flask server for running mechaphish analysis
+    - server should return info about drilling + afl status + crashes found
+- update the lisa page
+    - New button on results that starts mechaphish
+    - Links to webpage that displays info from mechaphish server
+    - has a stop button to stop phish
+    - displays exploit/crash information as it comes in
+        - get-info endpoint on phish which returns everything avail
+        - react table showing that info and periodically querying the phish
+
+
+options:
+- only lift llvm
+- do some fuzzing:
+    - both afl and driller
+    - just afl
+    
+    - afl modes:
+        - qemu
+        - dyninst (eventually)
+        - llvm lift + recompile with mctoll
+
+- triage and autogenerate rop

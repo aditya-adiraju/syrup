@@ -1,0 +1,8 @@
+https://rev.ng/blog/fuzzing/post.html
+https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md#hello-world-fuzzer
+http://llvm.org/docs/LibFuzzer.html
+
+driller https://blog.grimm-co.com/2020/05/guided-fuzzing-with-driller.html
+https://sites.cs.ucsb.edu/~vigna/publications/2016_NDSS_Driller.pdf
+
+https://arxiv.org/pdf/1702.06162.pdf cgc survey
