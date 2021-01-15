@@ -1,0 +1,14 @@
+#!/bin/bash -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+PS="$( docker ps -q --filter 'ancestor=ubuntu' --filter 'publish=1337/tcp' )"
+if [ -z "$PS" ]; then
+  docker build ${DIR} -t ubuntu --network=host --build-arg USER=$USER
+  # forward ports 9998 and 9999 for socat and gdbserver
+  docker run -it -v ${HOME}:${HOME} --user $USER --hostname xenial -p 9998:9998 -p 9999:9999 --privileged ubuntu "$@"
+else
+  if [ "$#" -lt 1 ]; then
+    docker exec -it "$PS" /bin/bash --login
+  else
+    docker exec -it "$PS" "$@"
+  fi
+fi
