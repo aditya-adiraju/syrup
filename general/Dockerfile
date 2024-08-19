@@ -1,9 +1,9 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 RUN dpkg --add-architecture i386
-RUN apt-get update
+RUN apt-get -y update
 
-# some nice defaults
-RUN apt-get install -y ltrace strace socat gdb gcc netcat ssh sudo
+# some nice defaults (netcat-openbsd doesnt support -e btw) 
+RUN apt-get install -y ltrace strace socat gdb gcc netcat-openbsd ssh sudo
 # for grabbing source of glibc
 RUN apt-get install -y libc6:i386 libc6-dbg glibc-source locales && tar -C /usr/src/glibc -xvf /usr/src/glibc/*.tar.xz
 
